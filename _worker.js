@@ -25,7 +25,7 @@ function decryptDataWithCryptoJS(encryptedDataHex, keyHex, ivHex) {
 }
 
 // 监听 HTTP 请求
-addEventListener('fetch'，event => {
+addEventListener('fetch',event => {
   event.respondWith(handleRequest(event.request));
 });
 
@@ -37,7 +37,7 @@ async function handleRequest(request) {
   const iv = '88ca0f0ea1ecf975';  // 初始化向量（16 字节）
 
   // 解密操作
-  const decryptedData = decryptDataWithCryptoJS(encryptedData, key, iv);
+  const decryptedData = decryptDataWithCryptoJS(encryptedData,key,iv);
 
   // 返回解密后的数据作为 HTTP 响应
   return new Response(decryptedData, { status: 200 });
