@@ -1,11 +1,9 @@
 // 使用相对路径加载 crypto-js 库
-importScripts('/assets/crypto-js.js');
-const CRYPTO_JS_URL = 'https://d5fc8f86b30b610f0c6d385bb727f577.r2.cloudflarestorage.com/crypto-js/assets/crypto-js.js';  // 替换为你的 R2 URL
+
+const CRYPTO_JS_URL = 'https://d5fc8f86b30b610f0c6d385bb727f577.r2.cloudflarestorage.com/crypto-js/assets/crypto-js.js';
 async function loadCryptoJs() {
   const response = await fetch(CRYPTO_JS_URL);
-  const cryptoJsScript = await response.text();  // 获取脚本内容
-
-  // 动态执行脚本，加载 CryptoJS 库
+  const cryptoJsScript = await response.text();
   eval(cryptoJsScript);
 }
 // 解密函数，使用 AES-CFB 模式
