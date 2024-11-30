@@ -20,7 +20,7 @@ function decryptDataWithCryptoJS(encryptedDataHex, keyHex, ivHex) {
 }
 
 // 监听 HTTP 请求
-addEventListener('fetch'， event => {
+addEventListener('fetch',event => {
   event.respondWith(handleRequest(event.request));
 });
 
