@@ -24,6 +24,7 @@ function decryptDataWithCryptoJS(encryptedDataHex, keyHex, ivHex) {
   return decryptedText;
 }
 
+
 // 监听 HTTP 请求
 addEventListener('fetch',event => {
   event.respondWith(handleRequest(event.request));
