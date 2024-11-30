@@ -1,6 +1,13 @@
 // 使用相对路径加载 crypto-js 库
 importScripts('/assets/crypto-js.js');
+const CRYPTO_JS_URL = 'https://d5fc8f86b30b610f0c6d385bb727f577.r2.cloudflarestorage.com/crypto-js/assets/crypto-js.js';  // 替换为你的 R2 URL
+async function loadCryptoJs() {
+  const response = await fetch(CRYPTO_JS_URL);
+  const cryptoJsScript = await response.text();  // 获取脚本内容
 
+  // 动态执行脚本，加载 CryptoJS 库
+  eval(cryptoJsScript);
+}
 // 解密函数，使用 AES-CFB 模式
 function decryptDataWithCryptoJS(encryptedDataHex, keyHex, ivHex) {
   const encryptedData = CryptoJS.enc.Hex.parse(encryptedDataHex);
@@ -20,11 +27,12 @@ function decryptDataWithCryptoJS(encryptedDataHex, keyHex, ivHex) {
 }
 
 // 监听 HTTP 请求
-addEventListener('fetch',event => {
+addEventListener('fetch'，event => {
   event.respondWith(handleRequest(event.request));
 });
 
 async function handleRequest(request) {
+    await loadCryptoJs();
   // 假设这是你的加密数据和密钥
   const encryptedData = '4265a9c353cd8624fd2bc7b5d75d2f18b1b5e66ccd37e2dfa628bcb8f73db2f14ba98bc6a1d8d0d1c7ff1ef0823b11264d0addaba2bd6a30bdefe06f4ba994ed';
   const key = '65151f8d966bf596';  // 密钥（16 字节）
